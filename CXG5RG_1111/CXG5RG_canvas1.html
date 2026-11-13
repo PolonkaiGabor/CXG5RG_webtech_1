@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title>Rajzolás a vászonra - NEPTUNKOD</title>
+</head>
+<body>
+<h2>Rajzolás a vászonra - NEPTUNKOD</h2>
+<canvas id="BLCanvas" width="700" height="350" style="border:1px solid black;"></canvas>
+<hr>
+<p><b>Források:</b></p>
+<p><a href="https://www.w3schools.com/html/html5_canvas.asp">https://www.w3schools.com/html/html5_canvas.asp</a></p>
+<p><a href="https://www.w3schools.com/tags/ref_canvas.asp">https://www.w3schools.com/tags/ref_canvas.asp</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage">https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage</a></p>
+
+<script>
+    var xy = document.getElementById("BLCanvas");
+    var blx = xy.getContext("2d");
+
+    blx.font = "26px Arial";
+    blx.fillStyle = "orange";
+    blx.fillText("Mérnökinformatika 2026", 200, 40);
+
+    var grd = blx.createRadialGradient(180, 110, 10, 180, 110, 80);
+    grd.addColorStop(0, "orange");
+    grd.addColorStop(0.5, "blue");
+    grd.addColorStop(1, "lime");
+    blx.fillStyle = grd;
+    blx.fillRect(100, 60, 200, 110);
+
+    blx.strokeStyle = "darkblue";
+    blx.lineWidth = 4;
+    blx.strokeRect(80, 200, 240, 130);
+
+    blx.beginPath();
+    blx.arc(500, 130, 70, 0.4 * Math.PI, 1.4 * Math.PI);
+    blx.fillStyle = "yellow";
+    blx.fill();
+    blx.lineWidth = 3;
+    blx.strokeStyle = "darkblue";
+    blx.stroke();
+
+    var img = new Image();
+    img.src = "iit.jpg";
+    img.onload = function() {
+        var sx = img.width * 0.54;
+        var sy = img.height * 0.51;
+        var sw = img.width * 0.24;
+        var sh = img.height * 0.17;
+        blx.drawImage(img, sx, sy, sw, sh, 500, 220, 195, 125);
+    };
+</script>
+</body>
+</html>

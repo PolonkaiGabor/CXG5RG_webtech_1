@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON fájl feldolgozás, beolvasás - JavaScript-ben</title>
+</head>
+<body>
+<h2>JSON fájl feldolgozás, beolvasás - JavaScript-ben</h2>
+<p><b>JSON:</b></p>
+<div id="eredmeny"></div>
+<button onclick="beolvas()">JSON beolvasás</button>
+
+<script>
+    function beolvas() {
+        var jsonStr = '[{"Nev":"HTML5","kiterjesztes":".html"},{"Nev":"CSS3","kiterjesztes":".css"},{"Nev":"JavaScript","kiterjesztes":".js"}]';
+        var obj = JSON.parse(jsonStr);
+        var szoveg = "";
+        for (var i = 0; i < obj.length; i++) {
+            szoveg += "Név: " + obj[i].Nev + ", kiterjesztés: " + obj[i].kiterjesztes + "<br>";
+        }
+        document.getElementById("eredmeny").innerHTML = szoveg + "<br>";
+    }
+</script>
+</body>
+</html>
